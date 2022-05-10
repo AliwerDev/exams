@@ -32,7 +32,7 @@ const Styled = styled.button<IProps>`
   cursor: pointer;
   border: 1px solid;
   outline: none;
-  font-weight: ${{}};
+  backdrop-filter: blur(20px);
   padding: ${({ size, isIcon }) =>
     isIcon
       ? 0

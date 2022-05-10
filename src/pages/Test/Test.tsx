@@ -131,31 +131,28 @@ const test = {
   ],
 };
 
+type answerType = {
+  [key: number]: number;
+};
+
 const Test = ({ mode }: { mode: string }) => {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
-  const [answerList, setAnswerList] = React.useState<
-    { questionId: number; answerId: number }[]
-  >([]);
+  const [answerObj, setanswerObj] = React.useState<{ [key: number]: number }>(
+    {}
+  );
 
   const cencel = () => {
-    setAnswerList([]);
+    setanswerObj([]);
     navigate("../");
   };
 
   const handleClick = (questionId: number, answerId: number) => {
-    setAnswerList((answerList) => {
-      const newAnswerList = [...answerList];
-      const index = answerList.findIndex(
-        (item) => item.questionId === questionId
-      );
-      if (index !== -1) {
-        newAnswerList[index] = { questionId, answerId };
-      } else {
-        newAnswerList.push({ questionId, answerId });
-      }
-      return newAnswerList;
+    setanswerObj((answerObj) => {
+      const newanswerObj = { ...answerObj };
+      newanswerObj[questionId] = answerId;
+      return newanswerObj;
     });
   };
 
@@ -175,10 +172,7 @@ const Test = ({ mode }: { mode: string }) => {
                   {question.answerModelList.map((answer, i) => (
                     <div
                       className={`ans-item ${
-                        answerList.find((i) => i.questionId === question.id)
-                          ?.answerId === answer.id
-                          ? "active"
-                          : ""
+                        answerObj[question.id] === answer.id ? "active" : ""
                       }`}
                       key={answer.id}
                       onClick={() => handleClick(question.id, answer.id)}
@@ -194,11 +188,14 @@ const Test = ({ mode }: { mode: string }) => {
                 </div>
               </div>
             ))}
+            <Flex justify="flex-end" align="center" className="controle_footer">
+              <Button variant="error">Testni Tugatish</Button>
+            </Flex>
           </Card>
         </div>
       </main>
       <aside className="controle">
-        <Button onClick={() => setOpen(true)} size="small" className="openBtn">
+        <Button onClick={() => setOpen(true)} size="medium" className="openBtn">
           <FiMenu />
         </Button>
         <div className="controle-header">
@@ -230,11 +227,7 @@ const Test = ({ mode }: { mode: string }) => {
                 }}
                 key={question.id}
                 isIcon={true}
-                variant={
-                  answerList.find((ans) => ans.questionId == question.id)
-                    ? "warning"
-                    : "primary"
-                }
+                variant={answerObj[question.id] ? "warning" : "primary"}
               >
                 {i + 1}
               </Button>

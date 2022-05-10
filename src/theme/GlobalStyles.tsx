@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { colors } from "./colors";
 
 export const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Tapestry&display=swap');
     html{
         scroll-behavior: smooth;
     }

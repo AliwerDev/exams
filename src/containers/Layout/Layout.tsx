@@ -12,11 +12,11 @@ import { Types } from "../../redux/types";
 const navlinks = [
   {
     name: "Exams",
-    path: "/",
+    path: "/exams",
   },
   {
     name: "My exams",
-    path: "/my-tests",
+    path: "/myexams",
   },
   {
     name: "About",

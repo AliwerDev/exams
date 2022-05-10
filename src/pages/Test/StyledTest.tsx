@@ -107,6 +107,7 @@ const StyledTest = styled.div<IProps>`
       }
       .controle_footer {
         width: 100%;
+        padding-top: 15px;
       }
     }
   }

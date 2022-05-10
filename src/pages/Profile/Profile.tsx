@@ -5,11 +5,7 @@ import { IRootState } from "../../redux/reducers";
 import StyledProfile from "./StyledProfile";
 
 const Profile = ({ mode }: { mode: string }) => {
-  return (
-    <StyledProfile mode={mode}>
-      <Wrapper>Profile</Wrapper>
-    </StyledProfile>
-  );
+  return <StyledProfile mode={mode}></StyledProfile>;
 };
 
 const mapStateToProps = (state: IRootState) => {

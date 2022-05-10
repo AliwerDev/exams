@@ -10,23 +10,20 @@ const StyledWrapper = styled.div`
   margin: 0 auto;
   padding: 20px 5px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 999px) {
     width: 90%;
   }
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1200px) {
     width: 80%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1300px) {
     width: 75%;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 70%;
   }
-  @media screen and (min-width: 1440px) {
-    width: 65%;
-  }
   @media screen and (min-width: 1920px) {
-    width: 60%;
+    width: 65%;
   }
 `;
 
