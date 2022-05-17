@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { IRootState } from "../../redux/reducers";
 import { colors } from "../../theme/colors";
 type ItemType = {
   element: string | ReactNode;
@@ -21,10 +19,8 @@ const DropDown = ({
   direction?: directionType;
 }) => {
   const [open, setOpen] = React.useState(false);
-  const mode = useSelector((state: IRootState) => state.settings.mode);
   return (
     <StyledDropDown
-      mode={mode}
       open={open}
       direction={direction}
       className="drop-down"
@@ -59,7 +55,7 @@ interface IProps {
   children: ReactNode;
   direction: directionType;
   open: boolean;
-  mode: string;
+  mode?: string;
 }
 
 const StyledDropDown = styled.div<IProps>(({ direction, open, mode }) => ({

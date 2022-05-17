@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from "react";
-import { useSelector } from "react-redux";
 
 import styled, { css } from "styled-components";
 import { IRootState } from "../../redux/reducers";
@@ -10,16 +9,15 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ children, className }) => {
-  const mode = useSelector((store: IRootState) => store.settings.mode);
   return (
-    <StyledCard className={className} mode={mode}>
+    <StyledCard className={className}>
       {children}
     </StyledCard>
   );
 };
 
 interface PropsStyle {
-  mode: string;
+  mode?: string;
 }
 
 const StyledCard = styled.div<PropsStyle>`

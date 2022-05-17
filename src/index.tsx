@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import Theme from "./theme";
+import AuthProvider from "./Context/AuthProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,11 +14,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Theme>
-          <App />
-        </Theme>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Theme>
+            <App />
+          </Theme>
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   </React.StrictMode>
 );
